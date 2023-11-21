@@ -1,0 +1,30 @@
+@use '../../../assets/base.scss';
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,300;1,200&family=Ubuntu&display=swap');
+
+.links
+{
+    color: white;
+    display: flex;
+
+    li
+    {
+        padding: 0 10px;
+    }
+
+    a
+    {
+        font-size: large;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: 'Kanit', sans-serif;
+        height: 100%;
+        width: 100%;
+        transition: color 0.2s ease-in-out;
+    }
+
+    a:hover
+    {
+        cursor: pointer;
+        color: base.$yellow-color;
+    }
+}
