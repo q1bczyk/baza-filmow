@@ -10,23 +10,23 @@ export const testData =
     },
     {
         imgUrl: "https://angora24.pl/wp-content/uploads/2023/02/140702154952-02-forrest-gump-restricted.jpg",
-        text: 'Ut enim ad minima veniam, quis nostrum',
+        text: 'Et harum quidem rerum facilis est et expedita distinctio',
     },
     {
         imgUrl: "https://icdn.cda.pl/vid/thumbs/6ecd09a9cfff14b79359ad77e8012fb56bd0d5029fe44a21be6a1fa5412e0a60-191.jpg_ooooxooxox_1280x720.jpg",
-        text: 'Ut enim ad minima veniam, quis nostrum',
+        text: 'Nam libero tempore, cum soluta nobis est eligendi optio,',
     },
     {
         imgUrl: "https://film.org.pl/wp-content/uploads/2020/12/film.org_.pl_memento-830x475.jpg",
-        text: 'Ut enim ad minima veniam, quis nostrum',
+        text: 'Temporibus autem quibusdam et aut officiis debitis',
     },
     {
         imgUrl: "https://www.gran-turismo.com/images/c/i13ynTpBw8HAmb.jpg",
-        text: 'Ut enim ad minima veniam, quis nostrum',
+        text: 'Itaque earum rerum hic tenetur a sapiente delectus',
     },
     {
         imgUrl: "https://assetsio.reedpopcdn.com/Potter_Ekranizacja_Headline.jpg?width=1200&height=1200&fit=bounds&quality=70&format=jpg&auto=webp",
-        text: 'Ut enim ad minima veniam, quis nostrum',
+        text: ' Ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus ',
     },
     {
         imgUrl: "https://film.org.pl/wp-content/uploads/2021/01/scary-830x475.jpg",
@@ -34,6 +34,6 @@ export const testData =
     },
     {
         imgUrl: "https://static.polityka.pl/_resource/res/path/82/1a/821a5dcf-27a5-4a9e-b8f0-0188485d0980_f1400x900",
-        text: 'Ut enim ad minima veniam, quis nostrum',
+        text: 'Quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse,',
     },
 ]

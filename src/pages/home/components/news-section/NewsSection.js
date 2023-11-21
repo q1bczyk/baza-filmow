@@ -1,4 +1,4 @@
-import { testData } from './data';
+import { testData } from '../../../../localdata/newsData';
 import NewsItem from './news-item/NewsItem';
 import styles from './NewsSection.module.scss'
 
