@@ -10,7 +10,9 @@ const NewsItem = (props) =>
                 gridArea: 'i' + props.order,  
             }}
         >
-            <img src={props.img}></img>
+            <div className={styles.imageBox}>
+                <img src={props.img}></img>
+            </div>
             <p>{props.text}</p>
             <div className={styles.overly}></div>
         </div>
