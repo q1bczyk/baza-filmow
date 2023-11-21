@@ -2,11 +2,11 @@ export const testData =
 [
     {
         imgUrl: "https://cdn.galleries.smcloud.net/t/galleries/gf-zBUw-ZAaE-sCH2_barbie-online-gdzie-obejrzec-film-w-internecie-data-premiery-994x828.jpg",
-        text: 'Ut enim ad minima veniam, quis nostrum',
+        text: 'Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur',
     },
     {
         imgUrl: "https://bi.im-g.pl/im/a4/48/1b/z28607652AMP,Kadr-z-filmu--Wladca-pierscieni--Dwie-wieze-.jpg",
-        text: 'Ut enim ad minima veniam, quis nostrum',
+        text: 'Ut enim ad minima veniam, quis nostrum exercitationem ullam',
     },
     {
         imgUrl: "https://angora24.pl/wp-content/uploads/2023/02/140702154952-02-forrest-gump-restricted.jpg",
