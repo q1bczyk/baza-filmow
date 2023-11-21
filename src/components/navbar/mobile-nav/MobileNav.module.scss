@@ -12,14 +12,21 @@
     top: 0;
     justify-content: center;
     align-items: center;
+    transition: all ease-in-out 0.2s;
 
     p
     {
         position: absolute;
-        color: base.$yellow-color;
+        color: white;
         top: 35px;
         right: 35px;
         cursor: pointer;
+        transition: all ease-in-out 0.2s;
+    }
+
+    p:hover
+    {
+        color: base.$yellow-color;
     }
 
     .logo
