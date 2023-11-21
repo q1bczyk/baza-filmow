@@ -1,0 +1,86 @@
+@use '../../../../assets/base.scss';
+
+.container
+{
+    width: 100%;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+
+    .grid
+    {
+        width: 90%;
+        height: 90%;
+        display: grid;
+        justify-content: center;
+    }
+
+    .item{
+        width: 100%;
+        height: 100%;
+        background-color: red;
+    }
+
+}
+
+@media(max-width: base.$small)
+{
+    .grid
+    {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: repeat(10, 180px);
+        grid-template-areas: 'i1 i1' 
+                             'i1 i1'
+                             'i2 i3'
+                             'i2 i3'
+                             'i4 i4'
+                             'i5 i5'
+                             'i6 i6' 
+                             'i7 i7' 
+                             'i8 i8'
+                             'i9 i9';
+    }
+}
+
+@media((min-width: base.$small) and (max-width: base.$medium))
+{
+    .grid{
+        grid-template-columns: repeat(4, 20%);
+        grid-template-rows: repeat(20, 50px);
+        grid-template-areas: 'i1 i1 i1 i1' 
+                             'i1 i1 i1 i1'
+                             'i1 i1 i1 i1' 
+                             'i1 i1 i1 i1'
+                             'i1 i1 i1 i1' 
+                             'i1 i1 i1 i1'
+                             'i1 i1 i1 i1'
+                             'i1 i1 i1 i1'
+                             'i2 i2 i3 i3'
+                             'i2 i2 i3 i3'
+                             'i2 i2 i3 i3'
+                             'i2 i2 i3 i3'
+                             'i2 i2 i3 i3'
+                             'i4 i4 i5 i5'
+                             'i4 i4 i5 i5'
+                             'i6 i6 i7 i7' 
+                             'i6 i6 i7 i7' 
+                             'i8 i8 i9 i9'
+                             'i8 i8 i9 i9';
+    }
+}
+
+@media(min-width: base.$medium)
+{
+    .grid{
+        grid-template-columns: repeat(10, 10%);
+        grid-template-rows: repeat(6, 120px);
+        grid-template-areas: 'i1 i1 i1 i1 i1 i1 i4 i4 i4 i4' 
+                             'i1 i1 i1 i1 i1 i1 i5 i5 i5 i5'
+                             'i1 i1 i1 i1 i1 i1 i6 i6 i6 i6'
+                             'i1 i1 i1 i1 i1 i1 i7 i7 i7 i7'
+                             'i2 i2 i2 i3 i3 i3 i8 i8 i8 i8'
+                             'i2 i2 i2 i3 i3 i3 i9 i9 i9 i9'
+    }
+}

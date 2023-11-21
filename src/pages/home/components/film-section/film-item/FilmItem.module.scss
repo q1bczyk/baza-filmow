@@ -1,0 +1,67 @@
+@use '../../../../../assets/base.scss';
+
+.container
+{
+    width: 250px;
+    height: 80%;
+    background-color: red;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    img
+    {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        object-fit: cover;
+        transition: all ease-in-out 0.2s;
+    }
+
+    div
+    {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.623) 10%, rgba(0,0,0,0) 73%, rgba(255,130,72,0) 100%);
+    }
+
+    h3
+    {
+        position: absolute;
+        bottom: 25px;
+        z-index: 2;
+        color: base.$yellow-color;
+        text-transform: uppercase;
+        transition: all ease-in-out 0.2s;
+        text-align: center;
+        padding: 0 10px;
+    }
+}
+
+.container:hover
+{
+    cursor: pointer;
+    h3
+    {
+        transform: translateY(-5px);
+    }
+
+    img
+    {
+        transform: scale(105%);
+    }
+}
+
+@media(min-width: 1900px)
+{
+    .container
+    {
+        width: 200px;
+        height: 70%;
+    }
+}

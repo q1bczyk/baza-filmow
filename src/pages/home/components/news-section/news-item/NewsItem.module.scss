@@ -1,0 +1,124 @@
+@use '../../../../../assets/base.scss';
+
+.vertical, .horizontal
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    color: white;
+    position: relative;
+    padding: 15px;
+    overflow: hidden;
+    font-family: base.$header-font;
+
+    p
+    {
+        padding: 0px 15px;
+        transition: all ease-in-out 0.3s;
+    }
+
+    .imageBox
+    {
+        height: 100%;
+        width: 30%;
+        overflow: hidden;
+
+        img
+        {
+            transition: all ease-in-out 0.3s;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    
+    
+}
+
+.vertical:hover, .horizontal:hover
+{
+    cursor: pointer;
+
+    img
+    {
+        transform: scale(110%);
+    }
+
+    p
+    {
+        color: base.$yellow-color;
+    }
+}
+
+.horizontal:hover
+{
+    p
+    {
+        transform: translateY(-10px);
+    }
+}
+
+.horizontal
+{
+    position: relative;
+    overflow: hidden;
+    justify-content: flex-start;
+    align-items: flex-end;
+    overflow: hidden;
+    
+    .imageBox
+    {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+        img
+        {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .overly
+    {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,0.7344187675070029) 10%, rgba(0,0,0,0) 73%, rgba(255,130,72,0) 100%);
+    }
+
+    p
+    {
+        z-index: 1;
+        padding: 20px;
+        font-size: 25px;
+    }
+
+     
+}
+
+.vertical
+{
+    img
+    {
+        height: 100%;
+        width: 30%;
+        object-fit: cover;
+    }
+
+    p
+    {
+        flex: 1;
+    }
+
+    .overly
+    {
+        display: none;
+    }
+
+}
+
