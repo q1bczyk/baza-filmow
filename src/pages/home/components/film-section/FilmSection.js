@@ -62,11 +62,11 @@ const FilmSection = () =>
             <h2>Filmowe nowości</h2>
             <div 
                 className={[styles.arrow, styles.arrowLeft].join(' ')}
-                onClick={() => changePage(-1)}  
+                onClick={() => changePage(1)}  
                 ><IoIosArrowBack/></div>
             <div 
                 className={[styles.arrow, styles.arrowRight].join(' ')}
-                onClick={() => changePage(1)}
+                onClick={() => changePage(-1)}
                 ><IoIosArrowForward/></div>
             <div className={styles.grid}>
                 <div className={styles.carousel} ref={carouselRef}>
