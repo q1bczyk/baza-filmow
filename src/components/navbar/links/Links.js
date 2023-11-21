@@ -1,9 +1,11 @@
 import styles from './Links.module.scss';
 
-const Links = () => 
+const Links = (props) => 
 {
     return(
-        <ul className={styles.links}>
+        <ul className={styles.links}
+            style={{flexDirection: props.option === 1 ? 'column' : 'row'}}
+        >
             <li><a>Filmy</a></li>
             <li><a>Seriale</a></li>
             <li><a>Ranking</a></li>

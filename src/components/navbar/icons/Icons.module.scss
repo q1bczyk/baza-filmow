@@ -1,0 +1,29 @@
+@use '../../../assets/base.scss';
+
+.container
+{
+    color: white;
+    font-size: 30px;
+    display: flex;
+
+    p
+    {
+        padding: 5px;
+        cursor: pointer;
+        transition: color 0.2s ease-in-out;
+    }
+    
+    p:hover
+    {
+        color: base.$yellow-color;
+    }
+
+}
+
+@media(min-width : base.$medium)
+{
+    .hamburger
+    {
+        display: none;
+    }
+}
