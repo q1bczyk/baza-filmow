@@ -13,9 +13,15 @@
         transition: color 0.2s ease-in-out;
     }
     
-    p:hover
+    p:hover,
+    a:hover
     {
         color: base.$yellow-color;
+    }
+
+    a
+    {
+        color: white;
     }
 
 }
