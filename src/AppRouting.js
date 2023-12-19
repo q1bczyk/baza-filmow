@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 
 const Navbar = lazy(() => import('./components/navbar/Navbar'));
 const HomePage = lazy(() => import('./pages/home/HomePage'));
+const LoginPage = lazy(() => import('./pages/login/LoginPage'));
 
 const Routing = () => 
 {
@@ -25,8 +26,12 @@ const Routing = () =>
         },
         {
           path: 'signin',
-          element: <div>logowanie</div>
-        }
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <LoginPage/>
+            </Suspense>
+          )
+        },
       ]);
 
     return(

@@ -1,0 +1,51 @@
+@use './base.scss';
+
+@mixin forms
+{
+    .form
+    {
+        width: 300px;
+        color: base.$yellow-color;
+        text-transform: uppercase;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        button
+        {
+            margin-top: 10px;
+            padding: 10px 30px;
+            border: 0;
+            border-radius: 5px;
+        }
+    
+        div
+        {
+            display: flex;
+            flex-direction: column;
+            width: 80%;
+            padding: 5px 0;
+
+            label
+            {
+                padding: 5px 0px;
+            }
+
+            input
+            {
+                padding: 10px;
+                border-radius: 5px;
+                border: none;
+            }
+
+            input:focus 
+            {
+                outline: none;
+                padding: 9px 10px;
+                border: 2px solid gold;
+            }
+
+        }
+    }     
+}
