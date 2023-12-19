@@ -21,12 +21,12 @@ const Routing = () =>
                 path: '',
                 element: <HomePage/>  
             },
-            {
-                path: 'signin',
-                element: <div>login</div>  
-            }
           ]
         },
+        {
+          path: 'signin',
+          element: <div>logowanie</div>
+        }
       ]);
 
     return(
