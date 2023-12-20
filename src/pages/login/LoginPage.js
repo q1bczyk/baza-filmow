@@ -25,7 +25,7 @@ const LoginPage = () =>
                         placeholder='login'
                         value={login}
                         onChange={(event) => setLogin(event.target.value)}
-                        style={{backgroundColor : isEmail(login) ? null : '#ff5d5d'}}>
+                        style={{border : isEmail(login) ? null : 'solid 2px #ff5d5d'}}>
                     </input>
                 </div>
                 <div>
@@ -34,7 +34,8 @@ const LoginPage = () =>
                         type='password'
                         placeholder='hasło'
                         value={password}
-                        onChange={(event) => setPassword(event.target.value)}>
+                        onChange={(event) => setPassword(event.target.value)}
+                        style={{border : password.length >= 8 ? null : 'solid 2px #ff5d5d'}}>
                     </input>
                 </div>
                 <button className={isEmail(login) ? styles.activeButton : null}>Zaloguj się</button>
