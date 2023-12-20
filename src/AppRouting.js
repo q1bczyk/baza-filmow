@@ -1,5 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import FilmDetailsPage from './pages/film-details/FilmDetailsPage';
+import RegisterPage from './pages/register/RegisterPage';
 
 const Navbar = lazy(() => import('./components/navbar/Navbar'));
 const HomePage = lazy(() => import('./pages/home/HomePage'));
@@ -22,6 +24,10 @@ const Routing = () =>
                 path: '',
                 element: <HomePage/>  
             },
+            {
+              path: 'details',
+              element: <FilmDetailsPage/>
+            }
           ]
         },
         {
@@ -36,7 +42,7 @@ const Routing = () =>
           path: 'signup',
           element: (
             <Suspense fallback={<div>Loading...</div>}>
-              <div>xdd</div>
+              <RegisterPage/>
             </Suspense>
           )
         },

@@ -72,6 +72,7 @@ const FilmSection = () =>
                 <div className={styles.carousel} ref={carouselRef}>
                     {data.map(element => (
                         <FilmItem
+                            id={element.id}
                             img={element.img}
                             title={element.title}
                         />

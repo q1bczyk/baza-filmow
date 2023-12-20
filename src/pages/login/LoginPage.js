@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Logo from '../../components/navbar/logo/Logo';
 import styles from './LoginPage.module.scss';
 
-import { isEmail } from '../../shared/formsValid';
+import { loginValid, passwordValid, signInValid } from '../../shared/formsValid';
 
 
 const LoginPage = () => 
@@ -25,7 +25,7 @@ const LoginPage = () =>
                         placeholder='login'
                         value={login}
                         onChange={(event) => setLogin(event.target.value)}
-                        style={{border : isEmail(login) ? null : 'solid 2px #ff5d5d'}}>
+                        style={{border : loginValid(login) ? null : 'solid 2px #ff5d5d'}}>
                     </input>
                 </div>
                 <div>
@@ -35,10 +35,10 @@ const LoginPage = () =>
                         placeholder='hasło'
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
-                        style={{border : password.length >= 8 ? null : 'solid 2px #ff5d5d'}}>
+                        style={{border : passwordValid(password) ? null : 'solid 2px #ff5d5d'}}>
                     </input>
                 </div>
-                <button className={isEmail(login) ? styles.activeButton : null}>Zaloguj się</button>
+                <button className={signInValid(login, password) ? styles.activeButton : null}>Zaloguj się</button>
             </div>
             <div className={styles.others}>
                 <p><NavLink to='/signup'>Załóż konto</NavLink></p>
