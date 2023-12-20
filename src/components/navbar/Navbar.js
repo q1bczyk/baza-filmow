@@ -5,6 +5,7 @@ import styles from './Navbar.module.scss';
 import useWindowResize from '../../hooks/useWindowResize';
 import { Provider } from 'react-redux';
 import store from '../../stores/navbarStore';
+import Logo from './logo/Logo';
 
 const Navbar = () => 
 {
@@ -12,7 +13,7 @@ const Navbar = () =>
         <Provider store={store}>
             <div className={styles.container}>
                 <div className={styles.navbar}>
-                    <div className={styles.logo}>Filmo<span>teka</span></div>
+                    <Logo/>
                     {useWindowResize() < 992 ? null : <Links/>}
                     <Icons/>
                 </div>

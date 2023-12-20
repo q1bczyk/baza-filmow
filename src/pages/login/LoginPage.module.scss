@@ -8,7 +8,58 @@
     min-height: 700px;
     background-color: black;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    @include shared-styles.forms
+    @include shared-styles.forms;
+
+    p
+    {
+        color : white;
+    }
+}
+
+.logo
+{
+    margin-bottom: 20px;
+}
+
+.others
+{
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    
+    p
+    {
+        width: 80%;
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    a
+    {
+        color: white;
+        text-decoration: none;
+    }
+
+    p:hover,
+    a:hover
+    {
+        cursor: pointer;
+        color: base.$yellow-color;
+    }
+}
+
+.activeButton
+{
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+.activeButton:hover
+{
+    background-color: base.$yellow-color;
 }

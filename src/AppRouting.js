@@ -32,6 +32,14 @@ const Routing = () =>
             </Suspense>
           )
         },
+        {
+          path: 'signup',
+          element: (
+            <Suspense fallback={<div>Loading...</div>}>
+              <div>xdd</div>
+            </Suspense>
+          )
+        },
       ]);
 
     return(
