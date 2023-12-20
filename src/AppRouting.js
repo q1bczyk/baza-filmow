@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import AddFilmPage from './pages/add-film/AddFilmPage';
 import FilmDetailsPage from './pages/film-details/FilmDetailsPage';
 import RegisterPage from './pages/register/RegisterPage';
 
@@ -27,6 +28,10 @@ const Routing = () =>
             {
               path: 'details',
               element: <FilmDetailsPage/>
+            },
+            {
+              path: 'add',
+              element: <AddFilmPage/>
             }
           ]
         },
