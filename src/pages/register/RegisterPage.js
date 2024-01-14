@@ -11,32 +11,36 @@ const RegisterPage = () => {
     const dispatch = useDispatch();
 
     const[login, setLogin] = useState('');
-    const[accountName, setAccountName] = useState('');
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
-    const[passwordRpt, setPasswordRpt] = useState('');
+
     const[isLoading, setLoading] = useState(false);
 
-    const showAlert = () => {
-        dispatch({type: 'SHOW_ALERT', payload : {title : 'xd', instructions : 'xd'}})
+    const showAlert = (title, instructions) => {
+        dispatch({type: 'SHOW_ALERT', payload : {title : title, instructions : instructions}})
     }
 
     const handleCreateAccount = async () => {
+
+        if(!signUpValid(email, login, password))
+            return
+
         setLoading(true);
 
         const data = {
-            login : login,
-            accountName : accountName,
+            name : login,
             email : email,
             password : password,
-            passwordRpt : passwordRpt,
         }
 
         try{
             const response = await createAccount(data);
-            console.log(response)
+            showAlert('Sukces!', 'udało się żałożyć konto');
         } catch (error){
-            showAlert();
+            if(error.response.status === 400)
+                showAlert('Błędne dane!', 'sprawdź poprawność danych');
+            else if(error.response.status === 500)
+                showAlert('Błęd serwera!', 'spróbuj ponownie później');
         }
 
         setLoading(false)
@@ -57,17 +61,6 @@ const RegisterPage = () => {
                         value={login}
                         onChange={(event) => setLogin(event.target.value)}
                         style={{border : loginValid(login) ? null : 'solid 2px #ff5d5d'}}
-                        >
-                    </input>
-                </div>
-                <div>
-                    <label>Nazwa konta</label>
-                    <input 
-                        type='text'
-                        placeholder='nazwa konta'
-                        value={accountName}
-                        onChange={(event) => setAccountName(event.target.value)}
-                        style={{border : loginValid(accountName) ? null : 'solid 2px #ff5d5d'}}
                         >
                     </input>
                 </div>
@@ -93,18 +86,7 @@ const RegisterPage = () => {
                         >
                     </input>
                 </div>
-                <div>
-                    <label>Powtórz hasło</label>
-                    <input 
-                        type='password'
-                        placeholder='hasło'
-                        value={passwordRpt}
-                        onChange={(event) => setPasswordRpt(event.target.value)}
-                        style={{border : passwordValid(passwordRpt) ? null : 'solid 2px #ff5d5d'}}
-                        >
-                    </input>
-                </div>
-                <button className={signUpValid(email, login, accountName, password, passwordRpt) ? styles.activeButton : null} onClick={handleCreateAccount}>Załóż konto</button>
+                <button className={signUpValid(email, login, password) ? styles.activeButton : null} onClick={handleCreateAccount}>Załóż konto</button>
             </div>
         </div>
     )

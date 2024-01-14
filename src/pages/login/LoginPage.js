@@ -12,6 +12,10 @@ const LoginPage = () =>
     const[login, setLogin] = useState('');
     const[password, setPassword] = useState('');
 
+    const loginClickHandle = () => {
+        
+    }
+
     return(
         <div className={styles.container}>
             <div className={styles.logo}>

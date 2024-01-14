@@ -10,3 +10,12 @@ export const createAccount = async (data) => {
         throw error;
     }
 }
+
+export const logIn = async (data) => {
+    try{
+        const response = await axios.post(`${baseUrl}/auth`, data)
+        return response.data;
+    } catch (error){
+        throw error;
+    }
+}

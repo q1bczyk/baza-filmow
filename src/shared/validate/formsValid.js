@@ -14,8 +14,8 @@ export const passwordValid = (password) => {
     return false;
 }
 
-export const signUpValid = (email, login, accountName, password, passwordRpt) => {
-    return isEmail(email) && loginValid(login) && loginValid(accountName) && passwordValid(password) && passwordValid(passwordRpt);
+export const signUpValid = (email, login, password) => {
+    return isEmail(email) && loginValid(login) && passwordValid(password);
 }
 
 export const signInValid = (login, password) => {
