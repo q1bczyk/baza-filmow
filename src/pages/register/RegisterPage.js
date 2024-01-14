@@ -2,17 +2,49 @@ import { useState } from 'react';
 import Logo from '../../components/navbar/logo/Logo';
 import styles from './RegisterPage.module.scss';
 import { isEmail, loginValid, passwordValid, signUpValid } from '../../shared/validate/formsValid';
+import { createAccount } from '../../api/UserApi';
+import { useDispatch } from 'react-redux';
+import Loader from '../../shared/ui/loader/Loader';
 
 const RegisterPage = () => {
+
+    const dispatch = useDispatch();
 
     const[login, setLogin] = useState('');
     const[accountName, setAccountName] = useState('');
     const[email, setEmail] = useState('');
     const[password, setPassword] = useState('');
     const[passwordRpt, setPasswordRpt] = useState('');
+    const[isLoading, setLoading] = useState(false);
+
+    const showAlert = () => {
+        dispatch({type: 'SHOW_ALERT', payload : {title : 'xd', instructions : 'xd'}})
+    }
+
+    const handleCreateAccount = async () => {
+        setLoading(true);
+
+        const data = {
+            login : login,
+            accountName : accountName,
+            email : email,
+            password : password,
+            passwordRpt : passwordRpt,
+        }
+
+        try{
+            const response = await createAccount(data);
+            console.log(response)
+        } catch (error){
+            showAlert();
+        }
+
+        setLoading(false)
+    }
 
     return(
         <div className={styles.container}>
+            {isLoading === true ? <Loader/> : null}
             <div className={styles.logo}>
                 <Logo/>
             </div>
@@ -72,7 +104,7 @@ const RegisterPage = () => {
                         >
                     </input>
                 </div>
-                <button className={signUpValid(email, login, accountName, password, passwordRpt) ? styles.activeButton : null}>Załóż konto</button>
+                <button className={signUpValid(email, login, accountName, password, passwordRpt) ? styles.activeButton : null} onClick={handleCreateAccount}>Załóż konto</button>
             </div>
         </div>
     )
