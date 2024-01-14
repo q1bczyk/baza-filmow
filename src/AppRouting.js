@@ -1,12 +1,13 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import AddFilmPage from './pages/add-film/AddFilmPage';
-import FilmDetailsPage from './pages/film-details/FilmDetailsPage';
-import RegisterPage from './pages/register/RegisterPage';
+import Loader from './shared/ui/loader/Loader';
 
 const Navbar = lazy(() => import('./components/navbar/Navbar'));
 const HomePage = lazy(() => import('./pages/home/HomePage'));
 const LoginPage = lazy(() => import('./pages/login/LoginPage'));
+const RegisterPage = lazy(() => import('./pages/register/RegisterPage'));
+const FilmDetailsPage = lazy(() => import('./pages/film-details/FilmDetailsPage'));
+const AddFilmPage = lazy(() => import('./pages/add-film/AddFilmPage'));
 
 const Routing = () => 
 {
@@ -14,7 +15,7 @@ const Routing = () =>
         {
           path: '/',
           element: (
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader/>}>
               <Navbar/>
               <Outlet/>
             </Suspense>
@@ -27,18 +28,26 @@ const Routing = () =>
             },
             {
               path: 'details',
-              element: <FilmDetailsPage/>
+              element: (
+                <Suspense fallback={<Loader/>}>
+                  <FilmDetailsPage/>
+                </Suspense>
+              )
             },
             {
               path: 'add',
-              element: <AddFilmPage/>
+              element: (
+                <Suspense fallback={<Loader/>}>
+                  <AddFilmPage/>
+                </Suspense>
+              )
             }
           ]
         },
         {
           path: 'signin',
           element: (
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader/>}>
               <LoginPage/>
             </Suspense>
           )
@@ -46,7 +55,7 @@ const Routing = () =>
         {
           path: 'signup',
           element: (
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loader/>}>
               <RegisterPage/>
             </Suspense>
           )

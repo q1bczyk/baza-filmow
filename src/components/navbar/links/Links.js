@@ -11,11 +11,7 @@ const Links = (props) =>
             style={{flexDirection: props.option === 1 ? 'column' : 'row'}}
         >
             <li>
-                <NavLink to=''
-                    style={({ isActive }) => ({
-                        color: isActive ? '#ffbb00' : 'white',
-                    })}
-                >
+                <NavLink to='' className={styles.links}>
                     Strona Główna
                 </NavLink>
             </li>
@@ -24,10 +20,10 @@ const Links = (props) =>
             <li><a>Newsy</a></li>
             {isUserActive === true ? 
             <li>
-                <NavLink to='add'
-                    style={({ isActive }) => ({
-                        color: isActive ? '#ffbb00' : 'white',
-                    })}
+                <NavLink 
+                    to='add' 
+                    className={styles.links}
+                    
                 >
                     Dodaj Film
                 </NavLink>
