@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Logo from '../../components/navbar/logo/Logo';
 import styles from './RegisterPage.module.scss';
-import { isEmail, loginValid, passwordValid, signUpValid } from '../../shared/formsValid';
+import { isEmail, loginValid, passwordValid, signUpValid } from '../../shared/validate/formsValid';
 
 const RegisterPage = () => {
 

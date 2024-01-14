@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Logo from '../../components/navbar/logo/Logo';
 import styles from './LoginPage.module.scss';
 
-import { loginValid, passwordValid, signInValid } from '../../shared/formsValid';
+import { loginValid, passwordValid, signInValid } from '../../shared/validate/formsValid';
 
 
 const LoginPage = () => 
