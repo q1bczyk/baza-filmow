@@ -4,17 +4,31 @@ import styles from './FilmSection.module.scss';
 import useWindowResize from '../../../../hooks/useWindowResize';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { filmData } from '../../../../localdata/filmData';
+import { getMovies } from '../../../../api/MoviesApi';
 
 const FilmSection = () => 
 {
     const carouselRef = useRef(null);
     const [spaceBetween, setSpace] = useState(0);
     const [currentPage, setPage] = useState(0);
-    const data = filmData
+    const [data, setData] = useState([]);
+
+    const fetchLatestMovies = async () => {
+        try{
+            const data = await getMovies();
+            setData(data);
+        } catch(err){
+            console.log(err)
+        }
+    }
 
     useEffect(() => {
         carouselRef.current.style.width = setWidth() + 'px'
     }, [useWindowResize()])
+
+    useEffect(() => {
+        fetchLatestMovies();
+    }, [])
 
     const setWidth = () => 
     {
@@ -59,7 +73,7 @@ const FilmSection = () =>
 
     return(
         <div className={styles.container}>
-            <h2>Filmowe nowości</h2>
+            <h2>Ostatnio dodane filmy</h2>
             <div 
                 className={[styles.arrow, styles.arrowLeft].join(' ')}
                 onClick={() => changePage(1)}  
@@ -70,12 +84,12 @@ const FilmSection = () =>
                 ><IoIosArrowForward/></div>
             <div className={styles.grid}>
                 <div className={styles.carousel} ref={carouselRef}>
-                    {data.map(element => (
+                    {data.slice(-8).reverse().map((element) => (
                         <FilmItem
-                            id={element.id}
-                            img={element.img}
-                            title={element.title}
-                        />
+                        id={element.id}
+                        img={element.image}
+                        title={element.title}
+                    /> 
                     )    
                     )}
                 </div>
