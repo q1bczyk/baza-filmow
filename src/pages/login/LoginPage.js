@@ -42,13 +42,12 @@ const LoginPage = () =>
         try{
             const response = await logIn(data);
             localStorage.setItem('token', response.token);
-            console.log(dispatch({type : 'LOGIN'}));
+            dispatch({type : 'LOGIN'})
             navigate('/');
         } catch (error){
-            console.log(error);
             if(error.response.status === 500)
                 showAlert('Błęd serwera!', 'spróbuj ponownie później');
-            else if(error.response.status === 401)
+            else if(error.response.status === 401 || error.response.status === 404)
                 setError(true);
             else
                 showAlert('Błędne dane!', 'sprawdź poprawność danych');
