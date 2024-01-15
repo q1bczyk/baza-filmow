@@ -15,9 +15,18 @@ export const addMovie = async (data) => {
     }
 }
 
-export const getMovies = async (data) => {
+export const getMovies = async () => {
     try{
         const response = await axios.get(baseUrl)
+        return response.data;
+    } catch (error){
+        throw error;
+    }
+}
+
+export const getMovie = async (id) => {
+    try{
+        const response = await axios.get(`${baseUrl}/${id}`)
         return response.data;
     } catch (error){
         throw error;

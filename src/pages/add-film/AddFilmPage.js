@@ -63,12 +63,13 @@ const AddFilmPage = () =>
             image : url,
             content : description,
             rate : convertedRate,
-            publicationYear : year,
+            productionYear : year,
             genre : selectedGenre,
         }
 
         try{
             const response = await addMovie(data)
+            console.log(data)
             showAlert('Sukces!', 'pomyślnie dodano film');
             clearData();
         }catch(err){
