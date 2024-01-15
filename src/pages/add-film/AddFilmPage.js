@@ -3,7 +3,8 @@ import { genres as genresData } from '../../localdata/genres';
 import styles from './AddFilmPage.module.scss';
 import { FaRegStar } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
-
+import { addMovie } from '../../api/MoviesApi';
+import { useDispatch } from 'react-redux';
 
 const AddFilmPage = () => 
 {
@@ -11,10 +12,19 @@ const AddFilmPage = () =>
     const[title, setTitle] = useState('');
     const[description, setDescription] = useState('');
     const[year, setYear] = useState(2000);
+    const[url, setUrl] = useState('');
     const[selectedGenre, setGenre] = useState('horror');
     const[rate, setRate] = useState(0);
 
     const genres = genresData;
+    const dispatch = useDispatch();
+
+    const clearData = () => {
+        setTitle('');
+        setDescription('');
+        setRate(0);
+        setUrl('');
+    }
 
     const renderDivs = () => {
         const divs = [];
@@ -28,6 +38,43 @@ const AddFilmPage = () =>
 
         return divs;
     }
+
+    const validData = () => {
+        if(title === '' || description === '' || url === '' || year === null || selectedGenre === null || (rate < 0 && rate > 9))
+            return false;
+
+        return true;    
+    }
+
+    const showAlert = (title, instructions) => {
+        dispatch({type: 'SHOW_ALERT', payload : {title : title, instructions : instructions}})
+    }
+
+    const addFilmHandle = async () =>{
+
+        if(!validData())
+            return
+
+        const convertedRate = rate + 1;
+
+        const data = 
+        {
+            title : title,
+            image : url,
+            content : description,
+            rate : convertedRate,
+            publicationYear : year,
+            genre : selectedGenre,
+        }
+
+        try{
+            const response = await addMovie(data)
+            showAlert('Sukces!', 'pomyślnie dodano film');
+            clearData();
+        }catch(err){
+            showAlert('Błęd serwera!', 'spróbuj ponownie później');
+        }
+    } 
 
     return(
         <div className={styles.container}>
@@ -63,14 +110,24 @@ const AddFilmPage = () =>
                     </input>
                 </div>
                 <div>
+                    <label>Zdjęcie</label>
+                    <input 
+                        type='text'
+                        placeholder='url'
+                        value={url}
+                        onChange={(event) => setUrl(event.target.value)}
+                        >
+                    </input>
+                </div>
+                <div>
                     <label>Gatunek</label>
-                    <div class="select">
+                    <div className="select">
                         <select id="standard-select" value={selectedGenre} onChange={(event) => setGenre(event.target.value)}>
                             {genres.map((genre) => (
                                 <option value={genre}>{genre}</option>
                             ))}
                         </select>
-                        <span class="focus"></span>
+                        <span className="focus"></span>
                         </div>
                 </div>
                 <div>
@@ -79,7 +136,10 @@ const AddFilmPage = () =>
                         {renderDivs()}
                     </div>
                 </div>
-                <button className={styles.activeButton}>Dodaj</button>
+                <button 
+                    className={validData() ? styles.activeButton : null}
+                    onClick={addFilmHandle}>
+                        Dodaj</button>
             </div>
         </div>
     )
