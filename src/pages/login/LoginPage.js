@@ -42,6 +42,7 @@ const LoginPage = () =>
         try{
             const response = await logIn(data);
             localStorage.setItem('token', response.token);
+            console.log(dispatch({type : 'LOGIN'}));
             navigate('/');
         } catch (error){
             console.log(error);

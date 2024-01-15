@@ -4,9 +4,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Alert = (props) => {
 
-    const isAlertOpen = useSelector(state => state.isAlertOpen);
-    const alertTitle = useSelector(state => state.title);
-    const alertInstructions = useSelector(state => state.instructions);
+    const isAlertOpen = useSelector(state => state.alert.isAlertOpen);
+    const alertTitle = useSelector(state => state.alert.title);
+    const alertInstructions = useSelector(state => state.alert.instructions);
     const dispatch = useDispatch();
 
     const closeAlert = () => {

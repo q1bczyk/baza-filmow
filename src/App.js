@@ -2,12 +2,12 @@ import { Provider } from 'react-redux';
 import './App.scss';
 import Routing from './AppRouting';
 import Alert from './shared/ui/alert/Alert';
-import alertStore from './redux/stores/alertStore';
+import rootStore from './redux/stores/rootStore';
 
 function App() {
   return (
       <>
-        <Provider store={alertStore}>
+        <Provider store={rootStore}>
           <Alert/>
           <Routing/>
         </Provider>

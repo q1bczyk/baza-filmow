@@ -1,4 +1,12 @@
-const alertReducer = (state, action) => {
+const initialState = 
+{
+    title : '',
+    instructions : '',
+    isAlertOpen : false,
+}
+
+const alertReducer = (state = initialState, action) => {
+    console.log('Reducer:', action);
     switch(action.type)
     {
         case 'SHOW_ALERT':

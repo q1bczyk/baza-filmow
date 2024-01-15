@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 const Icons = () => 
 {
-    const isUserActive = useSelector(state => state.isLoggedIn)
+    const isUserActive = useSelector(state => state.navbar.isLoggedIn)
     const dispatch = useDispatch();
 
     const handleHamburgerClick = () => {

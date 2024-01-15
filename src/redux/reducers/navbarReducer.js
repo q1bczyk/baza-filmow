@@ -1,4 +1,10 @@
-const navbarReducer = (state, action) => {
+const initialState = 
+{
+    isLoggedIn  : false,
+    isMenuOpened : false,
+}
+
+const navbarReducer = (state = initialState, action) => {
     switch(action.type){
         
         case "TOGGLE_MENU":
@@ -10,7 +16,7 @@ const navbarReducer = (state, action) => {
         case "LOGIN":
             return{
                 ...state,
-                isLoggIn : true
+                isLoggedIn : true
             };
             
         case "LOGOUT":

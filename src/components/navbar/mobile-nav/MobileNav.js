@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 
 const MobileNav = (props) => 
 {
-    const isMenuActive = useSelector(state => state.isMenuOpened)
+    const isMenuActive = useSelector(state => state.navbar.isMenuOpened)
     const dispatch = useDispatch();
 
     const handleHamburgerClick = () => {

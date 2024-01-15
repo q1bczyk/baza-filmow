@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 const Links = (props) => 
 {
-    const isUserActive = useSelector(state => state.isLoggedIn)
+    const isUserActive = useSelector(state => state.navbar.isLoggedIn)
 
     return(
         <ul className={styles.links}
