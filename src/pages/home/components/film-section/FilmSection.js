@@ -3,32 +3,20 @@ import FilmItem from './film-item/FilmItem';
 import styles from './FilmSection.module.scss';
 import useWindowResize from '../../../../hooks/useWindowResize';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { filmData } from '../../../../localdata/filmData';
-import { getMovies } from '../../../../api/MoviesApi';
+import { useLoaderData } from 'react-router-dom';
 
 const FilmSection = () => 
 {
     const carouselRef = useRef(null);
     const [spaceBetween, setSpace] = useState(0);
     const [currentPage, setPage] = useState(0);
-    const [data, setData] = useState([]);
-
-    const fetchLatestMovies = async () => {
-        try{
-            const data = await getMovies();
-            setData(data);
-        } catch(err){
-            console.log(err)
-        }
-    }
+    
+    const loadedData = useLoaderData();
+    const data = loadedData.movies;
 
     useEffect(() => {
         carouselRef.current.style.width = setWidth() + 'px'
     }, [useWindowResize()])
-
-    useEffect(() => {
-        fetchLatestMovies();
-    }, [])
 
     const setWidth = () => 
     {

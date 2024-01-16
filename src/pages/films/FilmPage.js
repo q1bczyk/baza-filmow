@@ -1,6 +1,4 @@
 import styles from './FilmPage.module.scss';
-import { useState, useEffect } from 'react';
-import { getMovies } from '../../api/MoviesApi';
 import FilmItem from '../home/components/film-section/film-item/FilmItem';
 import { useLoaderData } from 'react-router-dom';
 

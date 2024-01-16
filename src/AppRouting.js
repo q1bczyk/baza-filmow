@@ -27,7 +27,12 @@ const Routing = () =>
           [
             {
                 path: '',
-                element: <HomePage/>  
+                element: (
+                  <Suspense fallback={<Loader/>}>
+                    <HomePage/>
+                  </Suspense>
+                ),
+                loader: () => import('./api/loaders/MoviesLoader').then(module => module.moviesLoader())
             },
             {
               path: 'details/:movieId',
