@@ -1,0 +1,69 @@
+@use './../../assets/base.scss';
+
+.wrapper
+{
+    width: 100%;
+    height: 300px;
+    background-color: black;
+}
+
+.box
+{
+    width: 90%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.icons
+{
+    width: 100%;
+    height: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div
+    {
+        height: 50px;
+        width: 50px;
+        margin: 10px;
+        border-radius: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        cursor: pointer;
+        color: base.$yellow-color;
+        transition: all ease-in-out 0.1s;
+    }
+
+    div:hover
+    {
+        font-size: 35px;
+    }
+}
+
+.logo
+{
+    height: 65%;
+    width: 100%;
+    color: base.$yellow-color;
+    font-family: base.$header-font;
+    letter-spacing: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    p
+    {
+        margin-top: 5px;
+        margin-bottom: 40px;
+        font-size: 12px;
+    }
+}

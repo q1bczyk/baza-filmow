@@ -10,6 +10,7 @@ const RegisterPage = lazy(() => import('./pages/register/RegisterPage'));
 const FilmDetailsPage = lazy(() => import('./pages/film-details/FilmDetailsPage'));
 const AddFilmPage = lazy(() => import('./pages/add-film/AddFilmPage'));
 const FilmPage = lazy(() => import('./pages/films/FilmPage'));
+const Footer = lazy(() => import('./components/footer/Footer'));
 
 const Routing = () => 
 {
@@ -20,6 +21,7 @@ const Routing = () =>
             <Suspense fallback={<Loader/>}>
               <Navbar/>
               <Outlet/>
+              <Footer/>
             </Suspense>
           ),
           errorElement: <NotFound/>,
