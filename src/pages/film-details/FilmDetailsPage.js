@@ -2,7 +2,9 @@ import { useLoaderData } from 'react-router-dom';
 import styles from './FilmDetailsPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteMovie } from '../../api/MoviesApi';
-
+import CinemaSection from '../../shared/ui/cinema-section/CinemaSection';
+import { animateScroll as scroll } from 'react-scroll';
+import { useEffect } from 'react';
 
 const FilmDetailsPage = () => {
 
@@ -12,6 +14,13 @@ const FilmDetailsPage = () => {
     const data = loadedData.movie;
     const isLoggedIn = useSelector(state => state.navbar.isLoggedIn);
     
+    useEffect(() => {
+        scroll.scrollToTop({
+            duration: 200,
+            smooth: true,
+        });
+    })
+
     const deleteMovieHandle = async(id) => {
         try{
             await deleteMovie(id);
@@ -27,6 +36,7 @@ const FilmDetailsPage = () => {
     }
 
     return(
+        <>
         <div className={styles.container}>
             <div className={styles.img}>
                 <img src={data.image}></img>
@@ -46,8 +56,9 @@ const FilmDetailsPage = () => {
                 </div>
                 {isLoggedIn ? <button onClick={() => deleteMovieHandle(data.id)}>Usuń</button> : null}
             </div>
-            
         </div>
+        <CinemaSection/>
+        </>
     )
 }
 

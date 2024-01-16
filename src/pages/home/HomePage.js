@@ -4,6 +4,7 @@ import NewsSection from "./components/news-section/NewsSection";
 import { useEffect } from "react";
 import { isExpired } from 'react-jwt';
 import CinemaSection from "../../shared/ui/cinema-section/CinemaSection";
+import { animateScroll as scroll } from 'react-scroll';
 
 const HomePage = () => 
 {
@@ -12,6 +13,10 @@ const HomePage = () =>
     useEffect(() => {
         if(!isExpired(localStorage.getItem('token')))
              dispatch({type : 'LOGIN'})
+        scroll.scrollToTop({
+            duration: 300,
+            smooth: true,
+        });
     }, []);
 
     return(

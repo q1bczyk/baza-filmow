@@ -7,6 +7,7 @@ import { addMovie } from '../../api/MoviesApi';
 import { useDispatch } from 'react-redux';
 import { isExpired } from 'react-jwt';
 import { useNavigate } from 'react-router-dom';
+import { animateScroll as scroll } from 'react-scroll';
 
 const AddFilmPage = () => 
 {
@@ -31,7 +32,12 @@ const AddFilmPage = () =>
 
     useEffect(() => {
         if(isExpired(localStorage.getItem('token')))
-            navigate('/signin'); 
+            navigate('/signin');
+             
+        scroll.scrollToTop({
+            duration: 200,
+            smooth: true,
+        });
     }, []);
 
     const renderDivs = () => {
