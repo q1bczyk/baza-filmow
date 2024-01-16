@@ -1,15 +1,20 @@
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import styles from './FilmDetailsPage.module.scss';
-import { filmData } from '../../localdata/filmData';
 import { useEffect, useState } from 'react';
 import { getMovie } from '../../api/MoviesApi';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteMovie } from '../../api/MoviesApi';
 
 const FilmDetailsPage = () => {
 
     const [searchParams] = useSearchParams();
     const id = searchParams.get('id');
     const [data, setData] = useState({});
+    const isLoggedIn = useSelector(state => state.navbar.isLoggedIn);
     
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     useEffect(() => {
         fetchMovie();
     }, [])
@@ -21,7 +26,21 @@ const FilmDetailsPage = () => {
         }catch(err){
             console.log(err)
         }
-    } 
+    }
+    
+    const deleteMovieHandle = async(id) => {
+        try{
+            await deleteMovie(id);
+            showAlert('Sukces!', 'pomyślnie usunięto film');
+        } catch(err){
+            console.log(err);
+            showAlert('Błąd serwera!', 'spróbuj ponownie później');
+        }
+    }
+
+    const showAlert = (title, instructions) => {
+        dispatch({type: 'SHOW_ALERT', payload : {title : title, instructions : instructions}})
+    }
 
     return(
         <div className={styles.container}>
@@ -41,6 +60,7 @@ const FilmDetailsPage = () => {
                     <p>premiera: <span>{data.productionYear}</span></p>
                     <p>ocena: <span>{data.rate}</span></p>
                 </div>
+                {isLoggedIn ? <button onClick={() => deleteMovieHandle(id)}>Usuń</button> : null}
             </div>
         </div>
     )

@@ -15,6 +15,7 @@ const Icons = () =>
     };
 
     const handleLogOutClick = () => {
+        localStorage.removeItem('token');
         dispatch({type : 'LOGOUT'});
     };
     

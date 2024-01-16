@@ -32,3 +32,13 @@ export const getMovie = async (id) => {
         throw error;
     }
 }
+
+export const deleteMovie = async (id) => {
+    try{
+        const response = await axios.delete(`https://at.usermd.net/api/movie/${id}`, { headers : headers})
+        console.log(response);
+        return response.data;
+    } catch (error){
+        throw error;
+    }
+}

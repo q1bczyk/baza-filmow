@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { genres as genresData } from '../../localdata/genres';
 import styles from './AddFilmPage.module.scss';
 import { FaRegStar } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { addMovie } from '../../api/MoviesApi';
 import { useDispatch } from 'react-redux';
+import { isExpired } from 'react-jwt';
+import { useNavigate } from 'react-router-dom';
 
 const AddFilmPage = () => 
 {
@@ -18,6 +20,7 @@ const AddFilmPage = () =>
 
     const genres = genresData;
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const clearData = () => {
         setTitle('');
@@ -25,6 +28,11 @@ const AddFilmPage = () =>
         setRate(0);
         setUrl('');
     }
+
+    useEffect(() => {
+        if(isExpired(localStorage.getItem('token')))
+            navigate('/signin'); 
+    }, []);
 
     const renderDivs = () => {
         const divs = [];
@@ -69,7 +77,6 @@ const AddFilmPage = () =>
 
         try{
             const response = await addMovie(data)
-            console.log(data)
             showAlert('Sukces!', 'pomyślnie dodano film');
             clearData();
         }catch(err){

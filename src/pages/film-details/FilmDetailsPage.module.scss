@@ -1,4 +1,5 @@
 @use '../../assets/base.scss';
+@use '../../assets/shared-styles.scss';
 
 .container
 {
@@ -7,6 +8,26 @@
     margin-right: auto;
     display: flex;
     padding: 50px 0;
+
+    button
+    {
+        padding: 10px 30px;
+        border: 0;
+        border-radius: 5px;
+        font-family: base.$header-font;
+        text-transform: uppercase;
+        font-family: base.$film-title-font;
+        letter-spacing: 2px;
+        font-size: 16px;
+        background-color: rgb(224, 0, 0);
+        cursor: pointer;
+        color: white;
+    }
+
+    button:hover
+    {
+        background-color: #ff1100
+    }
 }
 
 .img

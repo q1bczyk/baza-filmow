@@ -8,6 +8,7 @@ const LoginPage = lazy(() => import('./pages/login/LoginPage'));
 const RegisterPage = lazy(() => import('./pages/register/RegisterPage'));
 const FilmDetailsPage = lazy(() => import('./pages/film-details/FilmDetailsPage'));
 const AddFilmPage = lazy(() => import('./pages/add-film/AddFilmPage'));
+const FilmPage = lazy(() => import('./pages/films/FilmPage'));
 
 const Routing = () => 
 {
@@ -39,6 +40,14 @@ const Routing = () =>
               element: (
                 <Suspense fallback={<Loader/>}>
                   <AddFilmPage/>
+                </Suspense>
+              )
+            },
+            {
+              path: 'movies',
+              element: (
+                <Suspense fallback={<Loader/>}>
+                  <FilmPage/>
                 </Suspense>
               )
             }

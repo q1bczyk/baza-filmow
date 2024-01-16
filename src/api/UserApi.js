@@ -19,3 +19,4 @@ export const logIn = async (data) => {
         throw error;
     }
 }
+

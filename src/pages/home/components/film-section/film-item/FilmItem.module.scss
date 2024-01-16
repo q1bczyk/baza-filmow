@@ -4,7 +4,6 @@
 {
     width: 250px;
     height: 80%;
-    background-color: red;
     position: relative;
     display: flex;
     justify-content: center;
@@ -28,6 +27,15 @@
         z-index: 1;
         background: rgb(0,0,0);
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.623) 10%, rgba(0,0,0,0) 73%, rgba(255,130,72,0) 100%);
+    }
+
+    p
+    {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     h3

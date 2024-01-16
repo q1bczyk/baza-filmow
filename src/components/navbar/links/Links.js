@@ -15,7 +15,11 @@ const Links = (props) =>
                     Strona Główna
                 </NavLink>
             </li>
-            <li><a>Filmy</a></li>
+            <li>
+                <NavLink to='movies' className={styles.links}>
+                    Filmy
+                </NavLink>
+            </li>
             <li><a>Ranking</a></li>
             <li><a>Newsy</a></li>
             {isUserActive === true ? 
