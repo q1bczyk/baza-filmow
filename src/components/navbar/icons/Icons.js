@@ -18,10 +18,14 @@ const Icons = () =>
         localStorage.removeItem('token');
         dispatch({type : 'LOGOUT'});
     };
+
+    const handleSearchClick = () => {
+        dispatch({type : 'SHOW_SEARCH'});
+    }
     
     return(
         <div className={styles.container}>
-            <p><IoSearchOutline/></p>
+            <p><IoSearchOutline onClick={handleSearchClick}/></p>
             <p>
                 {isUserActive === false ? 
                     <NavLink to='signin'><CgLogIn/></NavLink> : 
