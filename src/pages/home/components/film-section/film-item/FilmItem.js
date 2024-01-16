@@ -18,7 +18,7 @@ const FilmItem = (props) =>
     }, [props.img]);
 
     return(
-        <div className={styles.container} onClick={() => navigate('/details?id=' + props.id)}>
+        <div className={styles.container} onClick={() => navigate(`/details/${props.id}`)}>
             <h3>{props.title}</h3>
             <p>
                 {loading ? <Loader/> : <img src={props.img}></img>}

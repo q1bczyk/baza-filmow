@@ -1,32 +1,15 @@
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import styles from './FilmDetailsPage.module.scss';
-import { useEffect, useState } from 'react';
-import { getMovie } from '../../api/MoviesApi';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteMovie } from '../../api/MoviesApi';
+import { useEffect } from 'react';
 
 const FilmDetailsPage = () => {
 
-    const [searchParams] = useSearchParams();
-    const id = searchParams.get('id');
-    const [data, setData] = useState({});
-    const isLoggedIn = useSelector(state => state.navbar.isLoggedIn);
-    
     const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        fetchMovie();
-    }, [])
-
-    const fetchMovie = async () => {
-        try{
-            const data = await getMovie(id);
-            setData(data);
-        }catch(err){
-            console.log(err)
-        }
-    }
+    const loadedData = useLoaderData();
+    const data = loadedData.movie;
+    const isLoggedIn = useSelector(state => state.navbar.isLoggedIn);
     
     const deleteMovieHandle = async(id) => {
         try{
@@ -60,7 +43,7 @@ const FilmDetailsPage = () => {
                     <p>premiera: <span>{data.productionYear}</span></p>
                     <p>ocena: <span>{data.rate}</span></p>
                 </div>
-                {isLoggedIn ? <button onClick={() => deleteMovieHandle(id)}>Usuń</button> : null}
+                {isLoggedIn ? <button onClick={() => deleteMovieHandle(data.id)}>Usuń</button> : null}
             </div>
         </div>
     )

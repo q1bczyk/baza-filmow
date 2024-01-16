@@ -2,24 +2,12 @@ import styles from './FilmPage.module.scss';
 import { useState, useEffect } from 'react';
 import { getMovies } from '../../api/MoviesApi';
 import FilmItem from '../home/components/film-section/film-item/FilmItem';
+import { useLoaderData } from 'react-router-dom';
 
 const FilmPage = () => {
 
-    const [data, setData] = useState([]);
-
-    const fetchLatestMovies = async () => {
-        try{
-            const data = await getMovies();
-            console.log(data);
-            setData(data);
-        } catch(err){
-            console.log(err)
-        }
-    }
-
-    useEffect(() => {
-        fetchLatestMovies();
-    }, [])
+    const loadedData = useLoaderData();
+    const data = loadedData.movies;
 
     return(
         <div className={styles.wrapper}>

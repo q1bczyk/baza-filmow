@@ -30,12 +30,13 @@ const Routing = () =>
                 element: <HomePage/>  
             },
             {
-              path: 'details',
+              path: 'details/:movieId',
               element: (
                 <Suspense fallback={<Loader/>}>
                   <FilmDetailsPage/>
                 </Suspense>
-              )
+              ),
+              loader: (meta) => import('./api/loaders/MoviesLoader').then(module => module.movieLoader(meta)),
             },
             {
               path: 'add',
@@ -51,7 +52,8 @@ const Routing = () =>
                 <Suspense fallback={<Loader/>}>
                   <FilmPage/>
                 </Suspense>
-              )
+              ),
+              loader: () => import('./api/loaders/MoviesLoader').then((module) => module.moviesLoader())
             }
           ]
         },
