@@ -4,6 +4,7 @@ import styles from './FilmSection.module.scss';
 import useWindowResize from '../../../../hooks/useWindowResize';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useLoaderData } from 'react-router-dom';
+import { setWidth, changePage } from './carousel-controllers/carouselController';
 
 const FilmSection = () => 
 {
@@ -15,48 +16,20 @@ const FilmSection = () =>
     const data = loadedData.movies;
 
     useEffect(() => {
-        carouselRef.current.style.width = setWidth() + 'px'
+        const settings = setWidth();
+        carouselRef.current.style.width = settings.width + 'px';
+        setSpace(settings.space);
     }, [useWindowResize()])
 
-    const setWidth = () => 
+    const changePageHandler = (value) => 
     {
-        if(window.innerWidth < 992)
-            return 2500;
-        const containerWidth = (window.innerWidth * 80) / 100;
-        let space;
-        let width;
-        if(window.innerWidth > 1900)
-            space = (containerWidth - 1000) / 4
-        else if(window.innerWidth >= 1300 && window.innerWidth <= 1900 )
-            space = (containerWidth - 1000) / 3
-        else if(window.innerWidth >= 992 && window.innerWidth < 1300)
-            space = (containerWidth - 750) / 2
-        if(window.innerWidth <= 1900)
-            width = 2000 + (7 * space);
-        else 
-            width = 1600 + (7 * space);
-        setSpace(space);
-        return width
-    }
-
-    const changePage = (value) => 
-    {
-        let widthToChange;
-        if((currentPage === -3 && value < 0) && (window.innerWidth > 1900))
-            return
-        if((currentPage === -4 && value < 0) && (window.innerWidth > 1300 && window.innerWidth <= 1900))
-            return
-        if(currentPage === -5 && value < 0)
-            return
-        if(currentPage === 0 && value > 0)
-            return
-        const newPage = currentPage + value;
-        if(window.innerWidth <=1900)
-            widthToChange = newPage * (250 + spaceBetween);
-        else 
-        widthToChange = newPage * (200 + spaceBetween);
-        carouselRef.current.style.transform = `translateX(${widthToChange}px)`;
-        setPage(newPage)
+        const settings = changePage(value, currentPage, spaceBetween);
+        if(settings)
+        {
+            carouselRef.current.style.transform = `translateX(${settings.widthToChange}px)`;
+            setPage(settings.newPage)
+        }
+        else return;
     }
 
     return(
@@ -64,11 +37,11 @@ const FilmSection = () =>
             <h2>Ostatnio dodane filmy</h2>
             <div 
                 className={[styles.arrow, styles.arrowLeft].join(' ')}
-                onClick={() => changePage(1)}  
+                onClick={() => changePageHandler(1)}  
                 ><IoIosArrowBack/></div>
             <div 
                 className={[styles.arrow, styles.arrowRight].join(' ')}
-                onClick={() => changePage(-1)}
+                onClick={() => changePageHandler(-1)}
                 ><IoIosArrowForward/></div>
             <div className={styles.grid}>
                 <div className={styles.carousel} ref={carouselRef}>
