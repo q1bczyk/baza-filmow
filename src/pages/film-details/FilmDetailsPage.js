@@ -3,6 +3,7 @@ import styles from './FilmDetailsPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteMovie } from '../../api/MoviesApi';
 
+
 const FilmDetailsPage = () => {
 
     const dispatch = useDispatch();
@@ -45,6 +46,7 @@ const FilmDetailsPage = () => {
                 </div>
                 {isLoggedIn ? <button onClick={() => deleteMovieHandle(data.id)}>Usuń</button> : null}
             </div>
+            
         </div>
     )
 }

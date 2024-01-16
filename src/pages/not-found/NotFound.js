@@ -6,7 +6,7 @@ import styles from './NotFound.module.scss';
 const NotFound = () => {
 
     const navigate = useNavigate();
-    const [time, setTime] = useState(3);
+    const [time, setTime] = useState(5);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -16,7 +16,7 @@ const NotFound = () => {
         setTimeout(() => {
             navigate('/');
             clearInterval(interval);
-        }, 3000);
+        }, 5000);
         
         return () => clearInterval(interval);
     }, [navigate]);
