@@ -1,0 +1,61 @@
+@use '../../../assets/base.scss';
+
+.wrapper
+{
+    width: 100%;
+    min-height: 250px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: base.$header-font;
+
+    a
+    {
+        width: 200px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+    }
+
+    img
+    {
+        width: 200px;
+        height: auto;
+        object-fit: contain;
+        cursor: pointer;
+    }
+}
+
+.box
+{
+    width: 90%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2
+    {
+        height: 20%;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        font-size: 25px;
+        padding: 10px;
+    }
+
+    div
+    {
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}

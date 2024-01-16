@@ -3,6 +3,7 @@ import FilmSection from "./components/film-section/FilmSection";
 import NewsSection from "./components/news-section/NewsSection";
 import { useEffect } from "react";
 import { isExpired } from 'react-jwt';
+import CinemaSection from "../../shared/ui/cinema-section/CinemaSection";
 
 const HomePage = () => 
 {
@@ -17,6 +18,7 @@ const HomePage = () =>
         <div className="container">
             <NewsSection/>
             <FilmSection/>
+            <CinemaSection/>
         </div>
     )
 }
