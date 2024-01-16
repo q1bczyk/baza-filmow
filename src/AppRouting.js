@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import NotFound from './pages/not-found/NotFound';
 import Loader from './shared/ui/loader/Loader';
 
 const Navbar = lazy(() => import('./components/navbar/Navbar'));
@@ -21,6 +22,7 @@ const Routing = () =>
               <Outlet/>
             </Suspense>
           ),
+          errorElement: <NotFound/>,
           children: 
           [
             {
