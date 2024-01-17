@@ -20,8 +20,11 @@ const Links = (props) =>
                     Filmy
                 </NavLink>
             </li>
-            <li><a>Ranking</a></li>
-            <li><a>Newsy</a></li>
+            <li>
+                <NavLink to='news' className={styles.links}>
+                    Newsy
+                </NavLink>
+            </li>
             {isUserActive === true ? 
             <li>
                 <NavLink 

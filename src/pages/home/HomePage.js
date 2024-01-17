@@ -21,7 +21,7 @@ const HomePage = () =>
 
     return(
         <div className="container">
-            <NewsSection/>
+            <NewsSection background='black' color='white'/>
             <FilmSection/>
             <CinemaSection/>
         </div>

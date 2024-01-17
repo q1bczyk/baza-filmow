@@ -11,6 +11,7 @@ const FilmDetailsPage = lazy(() => import('./pages/film-details/FilmDetailsPage'
 const AddFilmPage = lazy(() => import('./pages/add-film/AddFilmPage'));
 const FilmPage = lazy(() => import('./pages/films/FilmPage'));
 const Footer = lazy(() => import('./components/footer/Footer'));
+const NewsPage = lazy(() => import('./pages/news-page/NewsPage'));
 
 const Routing = () => 
 {
@@ -61,6 +62,14 @@ const Routing = () =>
                 </Suspense>
               ),
               loader: () => import('./api/loaders/MoviesLoader').then((module) => module.moviesLoader())
+            },
+            {
+              path: 'news',
+              element: (
+                <Suspense fallback={<Loader/>}>
+                  <NewsPage/>
+                </Suspense>
+              ),
             }
           ]
         },

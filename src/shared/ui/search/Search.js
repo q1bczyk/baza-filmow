@@ -28,7 +28,6 @@ const Search = () => {
 
     useEffect(() => {
         fetchMovies();
-        console.log(filteredMovies)
     }, [])
 
     const hideSearchHandle = () => {

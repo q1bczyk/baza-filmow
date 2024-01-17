@@ -7,7 +7,7 @@ const NewsSection = () =>
     const test = testData;
 
     return(
-        <div className={styles.container}>
+        <div className={styles.container} >
             <div className={styles.grid}>
                 {test.map((data, index) => (
                     <NewsItem
