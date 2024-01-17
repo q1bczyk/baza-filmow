@@ -12,6 +12,7 @@ const AddFilmPage = lazy(() => import('./pages/add-film/AddFilmPage'));
 const FilmPage = lazy(() => import('./pages/films/FilmPage'));
 const Footer = lazy(() => import('./components/footer/Footer'));
 const NewsPage = lazy(() => import('./pages/news-page/NewsPage'));
+const SingleNewsPage = lazy(() => import('./pages/single-news-page/SingleNewsPage'));
 
 const Routing = () => 
 {
@@ -70,6 +71,15 @@ const Routing = () =>
                   <NewsPage/>
                 </Suspense>
               ),
+            },
+            {
+              path: 'news/:newsId',
+              element: (
+                <Suspense fallback={<Loader/>}>
+                  <SingleNewsPage/>
+                </Suspense>
+              ),
+              loader: (meta) => import('./api/loaders/newsLoader').then(module => module.newsLoader(meta)),
             }
           ]
         },
