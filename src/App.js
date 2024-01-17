@@ -3,7 +3,6 @@ import './App.scss';
 import Routing from './AppRouting';
 import Alert from './shared/ui/alert/Alert';
 import rootStore from './redux/stores/rootStore';
-import Search from './shared/ui/search/Search';
 
 function App() {
 
