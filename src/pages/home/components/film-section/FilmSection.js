@@ -47,6 +47,7 @@ const FilmSection = () =>
                 <div className={styles.carousel} ref={carouselRef}>
                     {data.slice(-8).reverse().map((element) => (
                         <FilmItem
+                        key={element.id}
                         id={element.id}
                         img={element.image}
                         title={element.title}
